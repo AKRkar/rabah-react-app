@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Routing from "./Routing";
+import StateMgtDemo from "./StateMgtDemo";
 
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
               <Routes>
                   <Route path="/" >
                     <Route index element={<Home />} />
-                    <Route path="route" element={<Routing />} />
+                      <Route path="route" element={<Routing />} />
+                      <Route path="managestate" element={<StateMgtDemo />} />
                   </Route>
               </Routes>
           </BrowserRouter>
