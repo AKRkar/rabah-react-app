@@ -22,6 +22,7 @@ function Home() {
             <h2>Things to learn:</h2>
             <ul>
                 <li> <a href="/route" > React Router </a></li>
+                <li> <a href="/managestate" > React State Management </a></li>
             </ul>
         </>
     );
