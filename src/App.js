@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Routing from "./Routing";
 
 
 function App() {
@@ -21,16 +22,6 @@ function Home() {
             <h2>Things to learn:</h2>
             <ul>
                 <li> <a href="/route" > React Router </a></li>
-            </ul>
-        </>
-    );
-
-}
-function Routing() {
-    return (
-        <>
-            <ul>
-                <li> React Routering</li>
             </ul>
         </>
     );
