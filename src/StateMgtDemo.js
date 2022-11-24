@@ -2,6 +2,7 @@
 // https://beta.reactjs.org/learn/managing-state
 
 import {useEffect, useState} from "react";
+import TaskList from "./TaskList";
 
 function StateMgtDemo(){
     const [taskText, setTaskText] = useState('');
@@ -30,14 +31,8 @@ function StateMgtDemo(){
             }}>
                 Add
             </button>
-            <ul>
-                {taskList.map(t => {
-                    return (<li key={nextTaskId}>
-                        {t.name}
-                        <button onClick={() => console.log("deleting")}>Delete</button>
-                    </li>)
-                })}
-            </ul>
+            <TaskList list={taskList} />
+
         </>
     );
 }
