@@ -6,15 +6,15 @@ import StateMgtDemo from "./StateMgtDemo";
 
 function App() {
   return (
-          <BrowserRouter>
-              <Routes>
-                  <Route path="/" >
-                    <Route index element={<Home />} />
-                      <Route path="route" element={<Routing />} />
-                      <Route path="managestate" element={<StateMgtDemo />} />
-                  </Route>
-              </Routes>
-          </BrowserRouter>
+    <BrowserRouter>
+        <Routes>
+            <Route path="/">
+            <Route index element={<Home />} />
+            <Route path="route" element={<Routing />} />
+            <Route path="managestate" element={<StateMgtDemo />} />
+            </Route>
+        </Routes>
+    </BrowserRouter>
   );
 }
 
