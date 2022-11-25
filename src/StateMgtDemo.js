@@ -2,6 +2,8 @@
 // https://beta.reactjs.org/learn/managing-state
 
 import {useEffect, useState} from "react";
+import Heading from "./Heading";
+import Section from "./Section";
 import TaskList from "./TaskList";
 
 function StateMgtDemo(){
@@ -32,6 +34,30 @@ function StateMgtDemo(){
                 Add
             </button>
             <TaskList list={taskList} />
+            {/* AKR concept of context */}
+            <Section>
+                <Heading>title</Heading>
+                <Section>
+                    <Heading>Head</Heading>
+                    <Section>
+                        <Section>
+                            <Section>
+                                <Heading>karim</Heading>
+                                <Section>
+                                    <Heading>karim</Heading>
+                                    {/* <Section>
+                                        <Heading>karim</Heading>
+                                    </Section> */}
+                                </Section>
+                            </Section>
+                        </Section>
+                    </Section>
+                </Section>
+            </Section>
+            {/* AKR concept of context */}
+            
+
+
 
         </>
     );
