@@ -1,10 +1,10 @@
 
 import {useContext} from 'react';
-import { TaskContext } from "./TaskContext"
+import { TaskContext } from "./TaskContext";
 
 export default function AddTask (){
     const taskContext = useContext(TaskContext);
-    
+
     return(
         <>
             <input placeholder="Add task" value={taskContext.taskText}

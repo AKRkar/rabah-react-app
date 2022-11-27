@@ -1,5 +1,10 @@
+import {useContext} from 'react';
+import { TaskContext } from "./TaskContext";
 
-function TaskList({list}){
+function TaskList(){
+
+    const taskContext = useContext(TaskContext);
+
     const printLi = (t) => {
         return (
                 <li key={t.id}>
@@ -8,7 +13,7 @@ function TaskList({list}){
                 </li>
         )
     }
-    const taskList = list.map((t) => printLi(t));
+    const taskList = taskContext.taskList.map((t) => printLi(t));
     return (
         <ul>
             {taskList}

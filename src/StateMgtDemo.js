@@ -9,13 +9,13 @@ import { TaskContext } from "./TaskContext"
 function StateMgtDemo(){
     const [taskText, setTaskText] = useState('');
     const [taskList, setTaskList] = useState([]);
-    
+
     return (
         <>
             <h1>State Management</h1>
             <TaskContext.Provider value={{ taskText,setTaskText,taskList,setTaskList }}>
                 <AddTask />
-                <TaskList list={taskList} />
+                <TaskList />
             </TaskContext.Provider>
 
         </>
