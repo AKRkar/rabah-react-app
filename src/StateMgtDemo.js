@@ -16,8 +16,8 @@ function StateMgtDemo(){
     return (
         <>
             <h1>State Management</h1>
-            <TaskContext.Provider value={{ taskText, changeText }}>
-                <AddTask taskList={taskList} setTaskList={setTaskList}/>
+            <TaskContext.Provider value={{ taskText, changeText,taskList,setTaskList }}>
+                <AddTask />
                 <TaskList list={taskList} />
             </TaskContext.Provider>
 

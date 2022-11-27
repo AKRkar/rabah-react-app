@@ -2,7 +2,7 @@
 import {useContext} from 'react';
 import { TaskContext } from "./TaskContext"
 
-export default function AddTask ({taskList, setTaskList}){
+export default function AddTask (){
     const taskContext = useContext(TaskContext);
     const setText = (t) => {
         taskContext.changeText(t);
@@ -14,7 +14,7 @@ export default function AddTask ({taskList, setTaskList}){
                 onChange={e => { setText(e.target.value);}}
             />
             <button onClick={() => {
-                    setTaskList([...taskList, { id: taskList.length, name: taskContext.taskText }]);
+                    taskContext.setTaskList([...taskContext.taskList, { id: taskContext.taskList.length, name: taskContext.taskText }]);
                     setText('');
                 }}>Add
             </button>
