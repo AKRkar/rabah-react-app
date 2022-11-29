@@ -1,18 +1,40 @@
 
-function TaskList({list, onDeleteTask}){
+import { useState } from "react";
 
-
+function TaskList({list, onDeleteTask, onChangeTask}){
     return (
         <ul>
-            {list.map((t) => {return <Task t={t} onDelete={onDeleteTask} />;})}
+            {list.map((t) => {return <Task t={t} onDelete={onDeleteTask} onChange={onChangeTask}  />;})}
         </ul>
     )
 }
 
-function Task ({t, onDelete}){ console.log(t)
+function Task ({t, onDelete, onChange}){ console.log(t)
+    const [isEditing, setIsEditing] = useState(false);
+    let taskContent;
+    if (isEditing) {
+        taskContent = (
+        <>
+            <input
+                value={t.text}
+                onChange={(e) => {
+                onChange({...t,text: e.target.value,});
+            }}
+            />
+            <button onClick={() => setIsEditing(false)}>Save</button>
+        </>
+    );
+    }else{ 
+        taskContent = (
+        <>
+            {t.text}
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+        </>
+        );
+    }
     return (
         <li key={t.id}>
-            {t.text}
+            {taskContent}
             <button onClick={() => onDelete(t.id)}>Delete</button>
         </li>
     );

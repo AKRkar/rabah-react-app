@@ -14,13 +14,14 @@ function StateMgtDemo(){
     function handleDeleteTask(taskId) {
         dispatch({type: 'deleted', id: taskId});
     }
-
+    function handleChangeTask(task) {
+        dispatch({type: 'changed',task: task,});
+    }
     return (
         <>
             <h1>State Management</h1>
             <AddTask onAdd={handleAddTask} />
-            <TaskList list={tasks} onDeleteTask={handleDeleteTask}  />
-
+            <TaskList list={tasks} onDeleteTask={handleDeleteTask} onChangeTask={handleChangeTask}  />
         </>
     );
 }
