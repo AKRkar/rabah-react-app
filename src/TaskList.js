@@ -1,24 +1,20 @@
 
-function TaskList({list}){
-    const printLi = (task) => {
-        return (
-            <Task  t={task} />  
-        )
-    }
-    function Task ({t}){
-        return (
-            <li key={t.id}>
-                    {t.name}
-                    <button onClick={() => console.log("deleting")}>Delete</button>
-            </li>
-        );
-    }
-    const taskList = list.map((t) => printLi(t));
+function TaskList({list, onDeleteTask}){
+
+
     return (
         <ul>
-            {taskList}
+            {list.map((t) => {return <Task t={t} onDelete={onDeleteTask} />;})}
         </ul>
     )
 }
 
+function Task ({t, onDelete}){ console.log(t)
+    return (
+        <li key={t.id}>
+            {t.text}
+            <button onClick={() => onDelete(t.id)}>Delete</button>
+        </li>
+    );
+}
 export default TaskList
