@@ -15,13 +15,6 @@ function StateMgtDemo(){
         setNextTaskId(nextTaskId + 1);
     }
 
-    // useEffect( () => {
-    //     console.log("init effect....")
-    // }, [])
-    // useEffect( () => {
-    //     console.log("taskText is changing..." + taskText)
-    // }, [taskText])
-
     return (
         <>
             <h1>State Management</h1>
