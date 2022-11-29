@@ -15,11 +15,21 @@ function StateMgtDemo(){
         setNextTaskId(nextTaskId + 1);
     }
 
+    // function Change(task){
+    //     setTaskList(taskList.map((t)=>{
+    //         if(t.nextTaskId === task.nextTaskId){
+    //             return task;
+    //         }
+    //         else
+    //             return t;
+    //     });
+    // }
+
     return (
         <>
             <h1>State Management</h1>
             <AddTask onAdd={Add} />
-            <TaskList list={taskList} />
+            <TaskList list={taskList}  />
 
         </>
     );

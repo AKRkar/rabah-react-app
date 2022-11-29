@@ -4,6 +4,7 @@ function TaskList({list}){
         return (
                 <li key={t.id}>
                     {t.name}
+                    <button onClick={() => console.log("editing")}>edit</button>
                     <button onClick={() => console.log("deleting")}>Delete</button>
                 </li>
         )
