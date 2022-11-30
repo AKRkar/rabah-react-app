@@ -1,13 +1,13 @@
 
 // https://beta.reactjs.org/learn/managing-state
 
-import {useReducer} from "react";
+import {useReducer, useState} from "react";
 import TaskList from "./TaskList";
 import AddTask from "./AddTask";
 import TaskStateMgtLogicController from "./TaskStateMgtLogicController";
 
 function StateMgtDemo(){
-    const [tasks, dispatch] = useReducer(TaskStateMgtLogicController, initialTasks);
+    const [tasks, dispatch] = useReducer(TaskStateMgtLogicController, [{id: 0, text: "test..." }]);
     function handleAddTask(text) {
         dispatch({type: 'added', id: nextId++, text: text,});
     }
@@ -26,11 +26,6 @@ function StateMgtDemo(){
     );
 }
 
-let nextId = 3;
-const initialTasks = [
-    { id: 0, text: 'Visit Kafka Museum', done: true },
-    { id: 1, text: 'Watch a puppet show', done: false },
-    { id: 2, text: 'Lennon Wall pic', done: false }
-];
+let nextId = 0;
 
 export default StateMgtDemo;
