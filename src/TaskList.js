@@ -4,7 +4,7 @@ import { useState } from "react";
 function TaskList({list, onDeleteTask, onChangeTask}){
     return (
         <ul>
-            {list.map((t) => {return <Task t={t} onDelete={onDeleteTask} onChange={onChangeTask}  />;})}
+            {list.map((t) => {return <li key={t.id}> <Task t={t} onDelete={onDeleteTask} onChange={onChangeTask} /> </li>;})}
         </ul>
     )
 }
@@ -33,10 +33,10 @@ function Task ({t, onDelete, onChange}){ console.log(t)
         );
     }
     return (
-        <li key={t.id}>
+        <>
             {taskContent}
             <button onClick={() => onDelete(t.id)}>Delete</button>
-        </li>
+        </>
     );
 }
 export default TaskList
