@@ -26,7 +26,7 @@ function StateMgtDemo(){
     function saveToDb(){
         setSaveBtn((saveBtn + "....."));
         setSpinnerOn(true);
-        axios.get("/bassamserver/save/tasks")
+        axios.get("/tasks/1")
             .then(r => handleServerResp(r))
             .catch(e => handleServerResp(e)); // will connect to the server....
         setTimeout( () => {setSpinnerOn(false);}, 1000); // test spinner
@@ -34,8 +34,17 @@ function StateMgtDemo(){
     }
     const handleServerResp = (resp) => {
         console.log(resp)
-        setSaveBtn( resp.request.responseURL + " - " + resp.name + " - " + resp.message
-                    + ". Req: " + resp.request.status + "/Res: " + resp.response.status)
+        let r = "";
+        if(resp.response){ // error
+            r = resp.request.responseURL + " - " + resp.name + " - " + resp.message
+                + ". Req: " + resp.request.status + "/Res: " + resp.response.status;
+        }
+        else{
+            r = resp.request.responseURL + " - "
+                + resp.request.status + "/" + resp.statusText + ' - load: ' + resp.data;
+        }
+
+        setSaveBtn(r);
     }
 
     return (
