@@ -2,12 +2,18 @@
 // https://beta.reactjs.org/learn/managing-state
 
 import {useReducer, useState} from "react";
+import axios from "axios";
+
 import TaskList from "./TaskList";
 import AddTask from "./AddTask";
 import TaskStateMgtLogicController from "./TaskStateMgtLogicController";
+import BlockUI from "./blockui";
 
 function StateMgtDemo(){
     const [tasks, dispatch] = useReducer(TaskStateMgtLogicController, [{id: 0, text: "test..." }]);
+    const [spinnerOn, setSpinnerOn] = useState(false);
+    const [saveBtn, setSaveBtn] = useState("Save to DB");
+    const [btnDisabled, setBtnDisabled] = useState(false);
     function handleAddTask(text) {
         dispatch({type: 'added', id: nextId++, text: text,});
     }
@@ -17,23 +23,28 @@ function StateMgtDemo(){
     function handleChangeTask(task) {
         dispatch({type: 'changed',task: task,});
     }
-    const [saveBtn, setSaveBtn] = useState("Save to DB");
     function saveToDb(){
-        let orgVal = saveBtn;
-        let newBtn = saveBtn + ".....";
-        setSaveBtn(newBtn);
-        setTimeout( () => {console.log(newBtn); setSaveBtn(orgVal);}, 1000);
-        // axio.post("/bassamserver/save/tasks", tasks)
-        //     .then((response => {console.log(response); setSaveBtn("Successfully saved tasks");})
-        //     .catch(e => {console.log(e); setSaveBtn("Sorry error...");}); // will connect to the server....
-
+        setSaveBtn((saveBtn + "....."));
+        setSpinnerOn(true);
+        axios.get("/bassamserver/save/tasks")
+            .then(r => handleServerResp(r))
+            .catch(e => handleServerResp(e)); // will connect to the server....
+        setTimeout( () => {setSpinnerOn(false);}, 1000); // test spinner
+        setBtnDisabled(true);
     }
+    const handleServerResp = (resp) => {
+        console.log(resp)
+        setSaveBtn( resp.request.responseURL + " - " + resp.name + " - " + resp.message
+                    + ". Req: " + resp.request.status + "/Res: " + resp.response.status)
+    }
+
     return (
         <>
             <h1>State Management</h1>
             <AddTask onAdd={handleAddTask} />
             <TaskList list={tasks} onDeleteTask={handleDeleteTask} onChangeTask={handleChangeTask}  />
-            <button onClick={() => { saveToDb()}}>{saveBtn}</button>
+            <button disabled={btnDisabled} onClick={() => { saveToDb()}}>{saveBtn}</button>
+            <BlockUI blocking={spinnerOn} />
         </>
     );
 }
