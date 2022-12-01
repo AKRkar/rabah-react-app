@@ -32,16 +32,16 @@ function StateMgtDemo(){
         setTimeout( () => {setSpinnerOn(false);}, 1000); // test spinner
         setBtnDisabled(true);
     }
-    const handleServerResp = (resp) => {
-        console.log(resp)
+    const handleServerResp = (axiosObject) => {
+        console.log(axiosObject)
         let r = "";
-        if(resp.response){ // error
-            r = resp.request.responseURL + " - " + resp.name + " - " + resp.message
-                + ". Req: " + resp.request.status + "/Res: " + resp.response.status;
+        if(axiosObject.name === "AxiosError"){ // error
+            r = axiosObject.request.responseURL + " - " + axiosObject.name + " - " + axiosObject.message
+                + ". Req: " + axiosObject.request.status + "/Res: " + axiosObject.response.status;
         }
         else{
-            r = resp.request.responseURL + " - "
-                + resp.request.status + "/" + resp.statusText + ' - load: ' + resp.data;
+            r = axiosObject.request.responseURL + " - "
+                + axiosObject.request.status + "/" + axiosObject.statusText + ' - load: ' + axiosObject.data;
         }
 
         setSaveBtn(r);

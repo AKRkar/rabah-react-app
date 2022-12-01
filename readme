@@ -3,3 +3,5 @@
 When using a new lib, I need to run the following cmd outside the codebase:
 npm install react-router-dom
 npm install axios
+
+After changing package.json, the react server must be restarted or rebuilt
