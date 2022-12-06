@@ -26,7 +26,11 @@ function StateMgtDemo(){
     function saveToDb(){
         setSaveBtn((saveBtn + "....."));
         setSpinnerOn(true);
-        axios.get("/tasks/1")
+        // axios.get("/tasks/1")
+        axios.post( "/tasks", // TODO: send the real list to tasks to the server
+                    "[{\"id\":123,\"name\":\"task1\"},{\"id\":124,\"name\":\"task2\"},{\"id\":125,\"name\":\"task3\"}]",
+                    {headers: {'Content-Type': 'application/json'} }
+        )
             .then(r => handleServerResp(r))
             .catch(e => handleServerResp(e)); // will connect to the server....
         setTimeout( () => {setSpinnerOn(false);}, 1000); // test spinner
