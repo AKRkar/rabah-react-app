@@ -15,7 +15,7 @@ function StateMgtDemo(){
     const [saveBtn, setSaveBtn] = useState("Save to DB");
     const [btnDisabled, setBtnDisabled] = useState(false);
     function handleAddTask(text) {
-        dispatch({type: 'added', id: nextId++, text: text,});
+        dispatch({type: 'added', id: ++nextId, text: text,});
     }
     function handleDeleteTask(taskId) {
         dispatch({type: 'deleted', id: taskId});
@@ -27,6 +27,7 @@ function StateMgtDemo(){
         setSaveBtn((saveBtn + "....."));
         setSpinnerOn(true);
         // axios.get("/tasks/1")
+        console.log(tasks);
         axios.post( "/tasks",
                     tasks,
                     { headers: {'Content-Type': 'application/json'} }
