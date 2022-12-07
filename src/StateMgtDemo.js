@@ -27,9 +27,9 @@ function StateMgtDemo(){
         setSaveBtn((saveBtn + "....."));
         setSpinnerOn(true);
         // axios.get("/tasks/1")
-        axios.post( "/tasks", // TODO: send the real list to tasks to the server
-                    "[{\"id\":123,\"name\":\"task1\"},{\"id\":124,\"name\":\"task2\"},{\"id\":125,\"name\":\"task3\"}]",
-                    {headers: {'Content-Type': 'application/json'} }
+        axios.post( "/tasks",
+                    tasks,
+                    { headers: {'Content-Type': 'application/json'} }
         )
             .then(r => handleServerResp(r))
             .catch(e => handleServerResp(e)); // will connect to the server....
